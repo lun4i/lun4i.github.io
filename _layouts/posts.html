@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1 class="page-heading">Публикации</h1>
+  {{ content }}
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{% assign m = post.date | date: "%-m" %}
+            {{ post.date | date: "%-d" }}
+            {% case m %}
+              {% when '1' %} Январь
+              {% when '2' %} Февраль
+              {% when '3' %} Март
+              {% when '4' %} Апрель
+              {% when '5' %} Май
+              {% when '6' %} Июнь
+              {% when '7' %} Июль
+              {% when '8' %} Август
+              {% when '9' %} Сентябрь
+              {% when '10' %} Октябрь
+              {% when '11' %} Ноябрь
+              {% when '12' %} Декабрь
+            {% endcase %}
+            {{ post.date | date: "%Y" }}
+          </span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">Подписывайтесь <a href="{{ "/feed.xml" | relative_url }}">через RSS</a></p>
+
+</div>
